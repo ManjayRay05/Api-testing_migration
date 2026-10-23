@@ -1,0 +1,36 @@
+{
+  "name": "api-migration-regression",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated API Migration Regression Testing Framework for comparing Old vs New API endpoints",
+  "main": "src/run-tests.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:read-only": "playwright test --grep @readonly",
+    "test:all": "playwright test",
+    "test:report": "playwright show-report playwright-report",
+    "test:cli": "node src/run-tests.js",
+    "test:mock": "node test/runner.test.js",
+    "test:validate": "node src/config-validator.js",
+    "mock:server": "node src/mock-server.js",
+    "auth:login": "node src/auth-helper.js"
+  },
+  "keywords": [
+    "api-testing",
+    "regression-testing",
+    "migration",
+    "qa-automation",
+    "axios",
+    "diff"
+  ],
+  "author": "Senior QA Automation Engineer",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}

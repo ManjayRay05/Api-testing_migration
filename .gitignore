@@ -1,0 +1,30 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Generated test reports containing potential sensitive data
+reports/*.html
+reports/*.json
+!reports/.gitkeep
+playwright-report/
+test-results/
+
+# System / Editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Lockfiles
+package-lock.json
+package-lock*
+

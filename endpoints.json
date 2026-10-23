@@ -1,0 +1,826 @@
+{
+  "$schema": "./schema/endpoints.schema.json",
+  "endpoints": [
+    {
+      "name": "login",
+      "module": "Authentication",
+      "description": "User authentication and session token issuance",
+      "method": "POST",
+      "oldPath": "/api/v4/user/login",
+      "newPath": "/api/v4/sign-in",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "client_id": "TEST_USER",
+        "password": "TEST_PASSWORD",
+        "pin": "123456",
+        "channel_id": "WEB"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "access_token",
+        "refresh_token",
+        "token",
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "expires_in"
+      ]
+    },
+    {
+      "name": "forgot_password_otp",
+      "module": "Authentication",
+      "description": "Request password recovery OTP",
+      "method": "POST",
+      "oldPath": "/api/v4/user/password/forgot/otp",
+      "newPath": "/api/v4/recovery/otp",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "client_id": "TEST_USER",
+        "pan": "ABCDE1234F"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "request_id",
+        "timestamp",
+        "trace_id",
+        "otp_expiry"
+      ]
+    },
+    {
+      "name": "set_password",
+      "module": "Authentication",
+      "description": "Set a new password using recovery credentials",
+      "method": "POST",
+      "oldPath": "/api/v4/user/password/set",
+      "newPath": "/api/v4/recovery",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "client_id": "TEST_USER",
+        "otp": "123456",
+        "new_password": "NewSecurePassword@123"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "request_id",
+        "timestamp",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "member_config_v1_get",
+      "module": "Member Configuration",
+      "description": "Fetch member settings (API v1)",
+      "method": "GET",
+      "oldPath": "/api/v1/broker/settings",
+      "newPath": "/api/v1/member/config",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "server_time"
+      ]
+    },
+    {
+      "name": "member_config_v1_post",
+      "module": "Member Configuration",
+      "description": "Update member settings (API v1)",
+      "method": "POST",
+      "oldPath": "/api/v1/broker/settings",
+      "newPath": "/api/v1/member/config",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "theme": "dark",
+        "notifications": true
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "member_config_v2_get",
+      "module": "Member Configuration",
+      "description": "Fetch member settings (API v2)",
+      "method": "GET",
+      "oldPath": "/api/v2/broker/settings",
+      "newPath": "/api/v2/member/config",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "server_time"
+      ]
+    },
+    {
+      "name": "account_preferences_get",
+      "module": "Account Preferences and Profile",
+      "description": "Fetch user account preferences",
+      "method": "GET",
+      "oldPath": "/api/v1/management/user/settings",
+      "newPath": "/api/v1/account/preferences",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "server_time"
+      ]
+    },
+    {
+      "name": "account_preferences_post",
+      "module": "Account Preferences and Profile",
+      "description": "Update user account preferences",
+      "method": "POST",
+      "oldPath": "/api/v1/management/user/settings",
+      "newPath": "/api/v1/account/preferences",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "order_confirmation": false,
+        "default_product": "MIS"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "account_profile",
+      "module": "Account Preferences and Profile",
+      "description": "Fetch user profile information",
+      "method": "GET",
+      "oldPath": "/api/v1/user/profile",
+      "newPath": "/api/v1/account",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "last_login_time",
+        "session_id"
+      ]
+    },
+    {
+      "name": "rewards",
+      "module": "Account Preferences and Profile",
+      "description": "Fetch referral and reward bonuses",
+      "method": "GET",
+      "oldPath": "/api/v1/user/referrals/bonus",
+      "newPath": "/api/v1/rewards",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "favorites_list",
+      "module": "Favorites",
+      "description": "Get pinned symbols / favorites list",
+      "method": "GET",
+      "oldPath": "/api/v1/dashboard/pins",
+      "newPath": "/api/v1/favorites",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "favorite_by_marketwatch_id",
+      "module": "Favorites",
+      "description": "Get favorites by marketwatch ID",
+      "method": "GET",
+      "oldPath": "/api/v1/dashboard/pins/:marketwatch_id",
+      "newPath": "/api/v1/favorites/:marketwatch_id",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {
+        "marketwatch_id": "1"
+      },
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "favorites_put",
+      "module": "Favorites",
+      "description": "Update favorites list",
+      "method": "PUT",
+      "oldPath": "/api/v1/dashboard/pins",
+      "newPath": "/api/v1/favorites",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "symbols": [
+          "RELIANCE",
+          "TCS",
+          "INFY"
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "favorite_put_by_marketwatch_id",
+      "module": "Favorites",
+      "description": "Update favorites for specific marketwatch ID",
+      "method": "PUT",
+      "oldPath": "/api/v1/dashboard/pins/:marketwatch_id",
+      "newPath": "/api/v1/favorites/:marketwatch_id",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {
+        "marketwatch_id": "1"
+      },
+      "query": {},
+      "body": {
+        "symbols": [
+          "RELIANCE",
+          "SBIN"
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "symbol_lists_get",
+      "module": "Symbol Lists",
+      "description": "Get all marketwatch symbol lists",
+      "method": "GET",
+      "oldPath": "/api/v1/marketwatches",
+      "newPath": "/api/v1/symbol-lists",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "symbol_lists_post",
+      "module": "Symbol Lists",
+      "description": "Create a new symbol list",
+      "method": "POST",
+      "oldPath": "/api/v1/marketwatches",
+      "newPath": "/api/v1/symbol-lists",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "name": "High Beta Stocks",
+        "symbols": [
+          "TATASTEEL",
+          "ADANIENT"
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "id",
+        "mw_id",
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "created_at"
+      ]
+    },
+    {
+      "name": "symbol_list_update",
+      "module": "Symbol Lists",
+      "description": "Update existing symbol list",
+      "method": "PUT",
+      "oldPath": "/api/v1/marketwatches/:mw_id",
+      "newPath": "/api/v1/symbol-lists/:mw_id",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {
+        "mw_id": "1"
+      },
+      "query": {},
+      "body": {
+        "name": "Banking Watchlist",
+        "symbols": [
+          "HDFCBANK",
+          "ICICIBANK",
+          "SBIN"
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "order_book_get",
+      "module": "Orders",
+      "description": "Fetch user orders",
+      "method": "GET",
+      "oldPath": "/api/v1/orders",
+      "newPath": "/api/v1/order-book",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "exchange_timestamp"
+      ]
+    },
+    {
+      "name": "order_book_post",
+      "module": "Orders",
+      "description": "Place regular order",
+      "method": "POST",
+      "oldPath": "/api/v1/orders",
+      "newPath": "/api/v1/order-book",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "exchange": "NSE",
+        "tradingsymbol": "INFY",
+        "transaction_type": "BUY",
+        "order_type": "LIMIT",
+        "quantity": 1,
+        "price": 1500,
+        "product": "CNC"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "order_id",
+        "oms_order_id",
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "order_timestamp"
+      ]
+    },
+    {
+      "name": "bracket_orders_post",
+      "module": "Orders",
+      "description": "Place bracket order",
+      "method": "POST",
+      "oldPath": "/api/v1/orders/bracket",
+      "newPath": "/api/v1/bracket-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "exchange": "NSE",
+        "tradingsymbol": "TCS",
+        "transaction_type": "BUY",
+        "quantity": 1,
+        "price": 3800,
+        "target": 3850,
+        "stoploss": 3770,
+        "trailing_stoploss": 5
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "order_id",
+        "bracket_order_id",
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "bracket_orders_put",
+      "module": "Orders",
+      "description": "Modify bracket order",
+      "method": "PUT",
+      "oldPath": "/api/v1/orders/bracket",
+      "newPath": "/api/v1/bracket-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "order_id": "BO12345",
+        "price": 3810,
+        "target": 3860
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "bracket_orders_delete",
+      "module": "Orders",
+      "description": "Cancel bracket order",
+      "method": "DELETE",
+      "oldPath": "/api/v1/orders/bracket",
+      "newPath": "/api/v1/bracket-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "order_id": "BO12345"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "basket_orders_post",
+      "module": "Orders",
+      "description": "Create basket order",
+      "method": "POST",
+      "oldPath": "/api/v1/orders/kart",
+      "newPath": "/api/v1/basket-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "name": "Monthly SIP",
+        "orders": [
+          {
+            "symbol": "NIFTYBEES",
+            "qty": 10
+          }
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "basket_id",
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "basket_orders_put",
+      "module": "Orders",
+      "description": "Modify basket order",
+      "method": "PUT",
+      "oldPath": "/api/v1/orders/kart",
+      "newPath": "/api/v1/basket-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "basket_id": "BASKET101",
+        "orders": [
+          {
+            "symbol": "NIFTYBEES",
+            "qty": 20
+          }
+        ]
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "basket_order_delete",
+      "module": "Orders",
+      "description": "Delete basket order item",
+      "method": "DELETE",
+      "oldPath": "/api/v1/orders/kart/:oms_order_id",
+      "newPath": "/api/v1/basket-orders/:oms_order_id",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {
+        "oms_order_id": "OMS98765"
+      },
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "cover_orders_delete",
+      "module": "Orders",
+      "description": "Cancel cover orders",
+      "method": "DELETE",
+      "oldPath": "/api/v1/orders/cover",
+      "newPath": "/api/v1/cover-orders",
+      "enabled": true,
+      "isMutation": true,
+      "pathParams": {},
+      "query": {},
+      "body": {
+        "order_id": "CO1001"
+      },
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "fills",
+      "module": "Trades and Positions",
+      "description": "Get executed trades / fills",
+      "method": "GET",
+      "oldPath": "/api/v1/trades",
+      "newPath": "/api/v1/fills",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "execution_time"
+      ]
+    },
+    {
+      "name": "open_positions",
+      "module": "Trades and Positions",
+      "description": "Get user open trading positions",
+      "method": "GET",
+      "oldPath": "/api/v1/positions",
+      "newPath": "/api/v1/open-positions",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "m2m",
+        "unrealized_pnl"
+      ]
+    },
+    {
+      "name": "ledger_movements",
+      "module": "Ledger and Margin",
+      "description": "Get fund transactions and ledger movements",
+      "method": "GET",
+      "oldPath": "/api/v1/funds/transactions",
+      "newPath": "/api/v1/ledger/movements",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "margin_balance",
+      "module": "Ledger and Margin",
+      "description": "Get trading margin balances",
+      "method": "GET",
+      "oldPath": "/api/v1/funds/view/margin",
+      "newPath": "/api/v1/balances/margin",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {},
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id"
+      ],
+      "numericTolerance": {
+        "available_margin": 1,
+        "used_margin": 1,
+        "cash_balance": 1
+      }
+    },
+    {
+      "name": "ticker_exchange_segment",
+      "module": "Market Data",
+      "description": "Market ticker summary by exchange and segment",
+      "method": "GET",
+      "oldPath": "/api/v1/marketdata/:exchange/:segment",
+      "newPath": "/api/v1/ticker/:exchange/:segment",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {
+        "exchange": "NSE",
+        "segment": "CM"
+      },
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "comparisonStrategy": "numeric-tolerance",
+      "numericTolerance": {
+        "ltp": 1,
+        "volume": 500
+      },
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "feed_time",
+        "ltp",
+        "volume",
+        "change",
+        "pChange"
+      ]
+    },
+    {
+      "name": "ticker_token",
+      "module": "Market Data",
+      "description": "Market ticker data for specific instrument token",
+      "method": "GET",
+      "oldPath": "/api/v1/marketdata/:exchange/:segment/:token",
+      "newPath": "/api/v1/ticker/:exchange/:segment/:token",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {
+        "exchange": "NSE",
+        "segment": "CM",
+        "token": "26000"
+      },
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "comparisonStrategy": "numeric-tolerance",
+      "numericTolerance": {
+        "ltp": 1,
+        "volume": 500
+      },
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "feed_time",
+        "ltp",
+        "volume",
+        "change",
+        "pChange"
+      ]
+    },
+    {
+      "name": "ticker_key",
+      "module": "Market Data",
+      "description": "Market ticker single field key query",
+      "method": "GET",
+      "oldPath": "/api/v1/marketdata/:exchange/:segment/:token/:key",
+      "newPath": "/api/v1/ticker/:exchange/:segment/:token/:key",
+      "enabled": true,
+      "isMutation": false,
+      "pathParams": {
+        "exchange": "NSE",
+        "segment": "CM",
+        "token": "26000",
+        "key": "ltp"
+      },
+      "query": {},
+      "body": null,
+      "oldHeaders": {},
+      "newHeaders": {},
+      "comparisonStrategy": "numeric-tolerance",
+      "numericTolerance": 5,
+      "ignorePaths": [
+        "timestamp",
+        "request_id",
+        "trace_id",
+        "feed_time"
+      ]
+    }
+  ]
+}
